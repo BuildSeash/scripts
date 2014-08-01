@@ -1,6 +1,0 @@
-repy_v2/*
-portability/*
-seattlelib_v2/*
-repy_v1/*
-clearinghouse/*
-seash/*
