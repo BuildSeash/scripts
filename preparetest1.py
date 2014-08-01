@@ -311,7 +311,7 @@ def main():
     if alist0 != "test" and alist0!= "#":
       copy_to_target(alist[count], target_dir)
       count=count + 1
-    elif alist0 != "#" and alist == "test":
+    elif alist0 != "#" and alist == "test" and repytest:
       repo=alist[count]
       alist1=repo.split(' ', 1)[1]
       copy_to_target(alist1, target_dir)
@@ -325,7 +325,7 @@ def main():
   
   
   
-  
+  """
   if repytest:
     # Only copy the tests if they were requested.
     copy_to_target("repy_v2/tests/restrictions.*", target_dir)
@@ -341,7 +341,7 @@ def main():
     # The web server is used in the software updater tests
     #copy_to_target("assignments/webserver/*", target_dir)
     #copy_to_target("softwareupdater/test/*", target_dir)
-
+  """
   # Set working directory to the target
   os.chdir(target_dir)
 

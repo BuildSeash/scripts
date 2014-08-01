@@ -4,3 +4,9 @@ seattlelib_v2/*
 repy_v1/*
 clearinghouse/*
 seash/*
+dist/LICENSE.TXT
+# Tests
+test repy_v2/tests/*
+test repy_v2/testsV2/*
+test portability/tests/*
+test seattlelib_v2/tests/*
