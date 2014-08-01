@@ -1,0 +1,6 @@
+git clone https://github.com/SeattleTestbed/seattlelib_v2
+git clone https://github.com/SeattleTestbed/clearinghouse
+git clone https://github.com/SeattleTestbed/portability
+git clone https://github.com/SeattleTestbed/repy_v2
+git clone https://github.com/SeattleTestbed/repy_v1
+git clone https://github.com/SeattleTestbed/dist -b git-aware-buildscripts
