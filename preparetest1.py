@@ -296,11 +296,30 @@ def main():
   file = open('file2.txt', 'r')
 
   alist = [line.rstrip('\n') for line in open('file2.txt')]
+  #abc=alist[0]
+  #abc1=abc.split(' ',1)[1]
+  #alist1=alist[].split(' ', 1)[1]
+  #print alist1
+  #print alist[1]
+  #print abc1
   length = len(alist)
   count =0
   while(count < length):
-    copy_to_target(alist[count], target_dir)
-    count=count + 1
+    repo=alist[count]
+    alist0=repo.split(' ', 1)[0]
+    #alist1=repo.split(' ', 1)[1]
+    if alist0 != "test" and alist0!= "#":
+      copy_to_target(alist[count], target_dir)
+      count=count + 1
+    elif alist0 != "#" and alist == "test":
+      repo=alist[count]
+      alist1=repo.split(' ', 1)[1]
+      copy_to_target(alist1, target_dir)
+      count=count + 1
+    else:
+      count=count + 1
+      continue
+    
   
    
   

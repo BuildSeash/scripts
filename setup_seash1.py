@@ -71,42 +71,50 @@ def find_command(cmd, paths=None, pathext=None):
 find_command("git")
 """
 
-file = open('file1.txt', 'r')
-line = file.readline().rstrip('\n')
+#file = open('file1.txt', 'r')
+
+alist = [line.rstrip('\n') for line in open('file1.txt')]
+length = len(alist)
+
+#line = file.readline().rstrip('\n')
+
+
+
 #"line".rstrip()
 #line1 = "git clone https://github.com/SeattleTestbed/seattlelib_v2"
 #print line
 #print line1
 
-pr = subprocess.Popen( line , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
-(out, error) = pr.communicate()
-print str("Checking out seattlelib_v2")
+count =0
+while(count < length):
+  repo=alist[count]
+  alist0=repo.split(' ', 1)[0]
+  #print alist0
+  if alist0 != "test" and alist0 != "install" and alist0!= "#":
+    pr = subprocess.Popen("git clone https://github.com/SeattleTestbed/"+ alist[count] , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
+    (out, error) = pr.communicate()
+    count =count+1
+    print str("Checking out repo")
+    print count
+  elif alist0 == "install":
+    repo=alist[count]
+    alist1=repo.split(' ', 1)[1]
+    count=count+1
+    pr = subprocess.Popen("pip install git+https://github.com/SeattleTestbed/"+ alist1 , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
+    pr = subprocess.Popen("git clone https://github.com/SeattleTestbed/"+ alist1 , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
+    print str("Checking out repo")
+    print count
+  elif alist0 == "test":
+    repo=alist[count]
+    alist1=repo.split(' ', 1)[1]
+    count=count+1
+    pr = subprocess.Popen("pip install git+git://github.com/SeattleTestbed/"+ alist1 , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
+    pr = subprocess.Popen("git clone https://github.com/SeattleTestbed/"+ alist1 , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
+    print str("Checking out repo")
+    print count
+  
 
-line = file.readline().rstrip('\n')
-#print line
-pr1 = subprocess.Popen( line , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
-(out, error) = pr1.communicate()
-print str("Checking out clearinghouse")
 
-line = file.readline().rstrip('\n')
-pr2 = subprocess.Popen( line , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
-(out, error) = pr2.communicate()
-print str("Checking out portability")
-
-line = file.readline().rstrip('\n')
-pr3 = subprocess.Popen( line , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
-(out, error) = pr3.communicate()
-print str("Checking out repy_v2")
-
-line = file.readline().rstrip('\n')
-pr4 = subprocess.Popen( line , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
-(out, error) = pr4.communicate()
-print str("Checking out repy_v1")
-
-line = file.readline().rstrip('\n')
-pr5 = subprocess.Popen( line , cwd = os.getcwd(), shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
-(out, error) = pr5.communicate()
-print str("Checking out dist")
 
 
 
